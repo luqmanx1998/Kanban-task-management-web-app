@@ -11,7 +11,7 @@ A sleek, modern Kanban-style task management app.
 
 # 🎥 Demo
 
-(./src/assets/kanbandemo.mp4)
+[(./src/assets/kanbandemo.mp4)](https://youtu.be/-LibJo0d8SU)
 
 # 🚀 Features
 
