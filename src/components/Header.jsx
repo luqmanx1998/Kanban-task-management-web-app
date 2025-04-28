@@ -69,7 +69,7 @@ function Header({openSideBar}) {
             <p className="hidden md:block">+ Add New Task</p>
           </Button>
           <div className="relative group">
-            <div className="group-hover:opacity-100 opacity-0 w-4 h-8 rounded-full bg-gray-600 absolute -bottom-1.75 -left-1.5 -z-1 transition-all duration-200">&nbsp;</div>
+            <div className="group-hover:opacity-100 opacity-0 w-4 h-8 rounded-full bg-custom-lines-light dark:bg-gray-600 absolute -bottom-1.75 -left-1.5 -z-1 transition-all duration-200">&nbsp;</div>
             <img className="cursor-pointer" src={ellipsis} alt="Ellipsis icon"  onClick={() => setEllipsisMenuisOpen(prev => !prev)}/>
           </div>
           
