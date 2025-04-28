@@ -13,6 +13,9 @@ A sleek, modern Kanban-style task management app.
 
 [Watch Demo Video](https://www.youtube.com/watch?v=-LibJo0d8SU)
 
+[Live Demo](https://kanban-task-management-web-jj17mkiis-luqmans-projects-7b715df5.vercel.app
+) 
+
 # 🚀 Features
 
 - Create, edit, and delete boards and tasks
