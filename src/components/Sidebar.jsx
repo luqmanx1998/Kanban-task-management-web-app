@@ -24,7 +24,7 @@ function Sidebar({setOpenSideBar, openSideBar}) {
 
   return (
     <>
-    <aside className={`hidden md:flex md:flex-col py-8 ${openSideBar ? "pr-6.5" : "pr-0"} min-h-[calc(100vh+150px)] dark:bg-custom-darkgrey transition-all duration-300 ${openSideBar ? "w-[260px] xl:w-[302px]" : "w-0"}`}>
+    <aside className={`hidden md:flex md:flex-col py-8 ${openSideBar ? "pr-6.5" : "pr-0"} min-h-[calc(100vh)] dark:bg-custom-darkgrey transition-all duration-300 ${openSideBar ? "w-[260px] xl:w-[302px]" : "w-0"}`}>
         <img className="dark:hidden h-[25px] w-[152px] ml-6.5 mb-[54px]" src={darkLogo} alt="Kanban dark logo" />
         <img className="hidden dark:block h-[25px] w-[152px] ml-6.5 mb-[54px]" src={lightLogo} alt="Kanban light logo" />
         <div className={`flex-1 overflow-y-auto transition-opacity duration-300 ${openSideBar ? "opacity-100 w-full" : "w-0 opacity-0 pointer-events-none"}`}> 

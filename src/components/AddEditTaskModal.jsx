@@ -152,9 +152,6 @@ const [subtaskErrors, setSubtaskErrors] = useState([]);
     ? dispatch(editActiveTask(formattedEditedData))
     : dispatch(addNewTask(formattedData));
 
-            type === "edit" ? dispatch(editActiveTask(formattedEditedData)) :
-            dispatch(addNewTask(formattedData));
-
             const activeColName = activeBoard.columns[task.columnIndex].name;
             
             if(type === "edit" && currentStatus !== activeColName) {
