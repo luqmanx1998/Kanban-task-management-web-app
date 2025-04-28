@@ -12,6 +12,8 @@ function AddEditTaskModal({type, task, onClose}) {
   const [subtasks, setSubtasks] = useState(type === "edit" ? task.subtasks.map(st => st.title) : [""]);
   const {activeBoard} = useSelector(selectBoardData);
   const [currentStatus, setCurrentStatus] = useState(activeBoard.columns[0]?.name || "");
+  const [titleError, setTitleError] = useState(false);
+const [subtaskErrors, setSubtaskErrors] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -36,6 +38,26 @@ function AddEditTaskModal({type, task, onClose}) {
     }
   }
 
+  const validateForm = () => {
+    let isValid = true;
+  
+    // Check title
+    if (taskTitle.trim() === "") {
+      setTitleError(true);
+      isValid = false;
+    }
+  
+    // Check subtasks
+    const newSubtaskErrors = subtasks.map(subtask => subtask.trim() === "");
+    setSubtaskErrors(newSubtaskErrors);
+    
+    if (newSubtaskErrors.some(error => error)) {
+      isValid = false;
+    }
+  
+    return isValid;
+  };
+
 
   return (
     <div onClick={() => onClose()} 
@@ -53,7 +75,7 @@ function AddEditTaskModal({type, task, onClose}) {
               placeholder="e.g. Take a coffee break"
               onChange={(e) => setTaskTitle(e.target.value)}
             />
-            <span className="text-red-600 w-[159px] hidden">
+            <span className={`text-red-600 w-[159px] ${titleError ? "block" : "hidden"}`}>
               Can't be empty
             </span>
           </div>
@@ -92,7 +114,7 @@ function AddEditTaskModal({type, task, onClose}) {
                         return j === i ? e.target.value : s;
                       }))}
                 />
-                <span className="text-red-600 w-[159px] hidden">
+                <span className={`text-red-600 w-[159px] ${subtaskErrors[i] ? "block" : "hidden"}`}>
                     Can't be empty
                 </span>
                 </div>
@@ -124,6 +146,12 @@ function AddEditTaskModal({type, task, onClose}) {
             <img className="absolute bottom-[25%] right-3 w-2.5 h-1.5" src={chevDownIcon} alt="chevron Down icon" />
         </div>
         <Button onClick={() => {
+            if (!validateForm()) return;
+
+            type === "edit" 
+    ? dispatch(editActiveTask(formattedEditedData))
+    : dispatch(addNewTask(formattedData));
+
             type === "edit" ? dispatch(editActiveTask(formattedEditedData)) :
             dispatch(addNewTask(formattedData));
 
